@@ -1,0 +1,38 @@
+import random
+
+x, y = 0, 0
+goal_x, goal_y = random.randint(-7, 7), random.randint(-7, 7)
+hazard_x, hazard_y = random.randint(-7, 7), random.randint(-7, 7)
+
+print("Welcome to Sloth Quest!")
+print("-----------------------")
+
+while x != goal_x or y != goal_y:
+    print(f"You’re currently at position ({x}, {y}) in the world.")
+    print("Available commands:")
+    print("N - go north, S - go south, E - go east, W - go west, X - exit game")
+
+    command = input("Enter command: ").strip().upper()
+
+    if command == 'N':
+        y += 1
+    elif command == 'S':
+        y -= 1
+    elif command == 'E':
+        x += 1
+    elif command == 'W':
+        x -= 1
+    elif command == 'X':
+        print("Bye, come back soon!")
+    else:
+        print("I find your lack of reading comprehension skills disturbing.")
+        continue
+    
+    print(f"Moving {command} to ({x}, {y})")
+
+    if x == hazard_x and y == hazard_y:
+        print("Oh no, you’ve been captured by anti-sloth protestors! You lose :(")
+        break
+
+if x == goal_x and y == goal_y:
+    print("You’ve discovered a cache of sloths! Congrats, you win :)")
